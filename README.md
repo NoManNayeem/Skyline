@@ -15,6 +15,19 @@ You can find the project repository [here](https://github.com/NoManNayeem/Skylin
 - **Reusable Components:** Modular and reusable components for scalability.
 - **Deployment:** Dockerized and CI/CD enabled, deployed on AWS CloudFront.
 
+## Screenshots
+
+### Hero Section
+![Hero Section](./screenshots/Screenshot1.png)
+
+### Feature Section
+![Features Section](./screenshots/Screenshot2.png)
+
+### Footer Section
+![Footer Section](./screenshots/Screenshot3.png)
+
+---
+
 ## Technologies Used
 
 - **React:** Frontend framework.

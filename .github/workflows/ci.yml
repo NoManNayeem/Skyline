@@ -28,16 +28,25 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Step 4: Run Linter
+      # Step 4: Add .env File
+      - name: Set up environment variables
+        run: |
+          echo "REACT_APP_API_BASE_URL=https://jsonplaceholder.typicode.com" >> .env
+
+      # Step 5: Run Linter
       - name: Run linter
         run: npm run lint
 
-      # Step 5: Run Tests
+      # Step 6: Run Tests
       - name: Run tests
+        env:
+          CI: true # Ensures React's test script runs in CI mode
         run: npm test
 
-      # Step 6: Build the Application
+      # Step 7: Build the Application
       - name: Build application
+        env:
+          REACT_APP_API_BASE_URL: https://jsonplaceholder.typicode.com
         run: npm run build
 
   docker-build:
@@ -49,7 +58,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Build Docker Image
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # Step 3: Build Docker Image
       - name: Build Docker Image
         run: |
           docker build -t skyline:latest .
